@@ -2,6 +2,7 @@ vue-reactive-stateful-promise
 ================
 [![Build](https://github.com/Tofandel/vue-reactive-stateful-promise/actions/workflows/test.yml/badge.svg)](https://github.com/Tofandel/vue-reactive-stateful-promise/actions)
 [![npm version](https://badge.fury.io/js/vue-reactive-stateful-promise.svg)](https://www.npmjs.com/package/vue-reactive-stateful-promise)
+[![dependencies](https://status.david-dm.org/gh/tofandel/vue-reactive-stateful-promise.svg)](https://david-dm.org/tofandel/vue-reactive-stateful-promise)
 
 Native Promise wrapper with reactive state getters
 (`isPending`, `isResolved`, `isRejected`).
