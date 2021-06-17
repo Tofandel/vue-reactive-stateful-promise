@@ -1,0 +1,50 @@
+{
+  "name": "vue-reactive-stateful-promise",
+  "version": "1.0.2",
+  "description": "Extends promises with their state, a timeout and make them cancellable, all of that vue reactive",
+  "main": "dist/index",
+  "runkitExampleFilename": "./example.js",
+  "files": [
+    "index.mjs"
+  ],
+  "type": "module",
+  "scripts": {
+    "test": "tap --100 && npm run lint",
+    "lint": "standard | snazzy",
+    "lint:fix": "standard --fix | snazzy",
+    "compile": "babel index.mjs --source-maps --out-dir dist",
+    "clean": "rimraf dist",
+    "prepare": "npm run lint:fix && in-publish && npm run compile || not-in-publish",
+    "postpublish": "in-publish && npm run clean || not-in-publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tofandel/vue-reactive-stateful-promise.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Tofandel/vue-reactive-stateful-promise/issues"
+  },
+  "homepage": "https://github.com/Tofandel/vue-reactive-stateful-promise",
+  "keywords": [
+    "promise",
+    "pending",
+    "rejected",
+    "abort",
+    "timeout"
+  ],
+  "dependencies": {
+    "vue": "^2.x"
+  },
+  "author": "Adrien Foulon",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "@babel/cli": "^7.14.5",
+    "@babel/preset-env": "^7.14.5",
+    "eslint": "^7.28.0",
+    "in-publish": "^2.0.1",
+    "rimraf": "^3.0.2",
+    "snazzy": "^9.0.0",
+    "standard": "^16.0.3",
+    "tap": "^15.0.9"
+  }
+}
