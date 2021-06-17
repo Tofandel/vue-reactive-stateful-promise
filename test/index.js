@@ -1,5 +1,5 @@
 import tap from 'tap'
-import StatefulPromise, { isAsync } from '../index.mjs'
+import StatefulPromise from '../index.mjs'
 import Vue from 'vue'
 
 function sleep (ms) {
@@ -139,6 +139,3 @@ tap.test('reactivity', async (t) => {
   t.equal(v.promiseIsResolved, true)
   t.equal(v.promiseIsRejected, false)
 })
-
-tap.equal(isAsync(async () => ({})), true)
-tap.equal(isAsync((res) => res()), false)

@@ -1,9 +1,5 @@
 import Vue from 'vue'
 
-function isAsync (asyncFn) {
-  return /async/.test(asyncFn.toString())
-}
-
 const StatefulPromise = Object.setPrototypeOf(function (promise, options = {}) {
   // Don't modify any promise that has been already modified.
   if (promise instanceof Promise && promise.isPending !== undefined) return promise
@@ -27,7 +23,9 @@ const StatefulPromise = Object.setPrototypeOf(function (promise, options = {}) {
 
   const prom = new Promise((resolve, reject) => {
     if (typeof promise === 'function') {
-      promise = isAsync(promise) ? promise() : new Promise(promise)
+      promise = new Promise((resolve, reject) => {
+        promise(resolve, reject)?.then(resolve, reject)
+      })
     }
     let t = null
     const reslve = (...args) => {
@@ -63,7 +61,3 @@ const StatefulPromise = Object.setPrototypeOf(function (promise, options = {}) {
 }, Promise)
 
 export default StatefulPromise
-
-export {
-  isAsync
-}
