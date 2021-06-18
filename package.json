@@ -1,6 +1,6 @@
 {
   "name": "vue-reactive-stateful-promise",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Extends promises with their state, a timeout and make them cancellable, all of that vue reactive",
   "main": "dist/index",
   "runkitExampleFilename": "./example.js",

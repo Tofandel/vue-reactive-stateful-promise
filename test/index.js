@@ -115,19 +115,27 @@ tap.test('options', async (t) => {
 })
 
 tap.test('reactivity', async (t) => {
-  const promise = new StatefulPromise((resolve) => {
-    setTimeout(resolve, 20)
-  })
   const v = new Vue({
+    data: () => ({
+      promise: new StatefulPromise((resolve) => {
+        setTimeout(resolve, 20)
+      }),
+      fired: false
+    }),
     computed: {
       promiseIsPending () {
-        return promise.isPending
+        return this.promise.isPending
       },
       promiseIsResolved () {
-        return promise.isResolved
+        return this.promise.isResolved
       },
       promiseIsRejected () {
-        return promise.isRejected
+        return this.promise.isRejected
+      }
+    },
+    watch: {
+      promiseIsPending () {
+        this.fired = true
       }
     }
   })
@@ -138,4 +146,5 @@ tap.test('reactivity', async (t) => {
   t.equal(v.promiseIsPending, false)
   t.equal(v.promiseIsResolved, true)
   t.equal(v.promiseIsRejected, false)
+  t.equal(v.fired, true)
 })

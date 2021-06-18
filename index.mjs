@@ -10,7 +10,6 @@ const StatefulPromise = Object.setPrototypeOf(function (promise, options = {}) {
     data () {
       return {
         isResolved: false,
-        isPending: true,
         isRejected: false
       }
     },
